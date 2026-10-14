@@ -1,0 +1,17 @@
+{
+  "name": "liam724",
+  "owner": {
+    "name": "Liam McGuire",
+    "url": "https://github.com/liam724"
+  },
+  "description": "Liam McGuire's agent skills, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "liam-skills",
+      "source": "./",
+      "description": "Agent skills for getting more out of coding agents, starting with transcript-mining.",
+      "category": "productivity",
+      "keywords": ["skills", "transcripts", "productivity"]
+    }
+  ]
+}

@@ -1,46 +1,66 @@
 # Skills
 
-## transcript-mining
+[![skills.sh](https://skills.sh/b/liam724/skills)](https://skills.sh/liam724/skills)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Review local Claude Code, Cursor, and Codex transcripts to improve your
-coding-agent configuration: instructions, skills, tools, scripts, and settings.
-Requires Python 3.8+; no external Python packages or network access are needed
-by the helpers. Analysis runs through your coding agent's configured model.
+Agent skills I use to get more out of Claude Code, Codex and Cursor.
 
-### Use
+Each skill is a small folder with a `SKILL.md` and, where it helps, a few
+scripts. Read them, copy them, change them. They're meant to be yours.
 
-When working inside this checkout, the relative links in `.claude/skills/`
-and `.agents/skills/` expose the same `transcript-mining/` folder:
+## Install
 
-- Claude Code: `/transcript-mining`
-- Codex: `$transcript-mining`
+Pick one method per agent. Installing both gives you every skill twice.
 
-For use across projects, copy the complete `transcript-mining/` folder into
-`~/.claude/skills/` for Claude Code or `~/.agents/skills/` for Codex. If a skill
-with that name already exists, review it before replacing it. Windows checkouts
-need Git symlink support for the repository links; copying the folder into the
-agent's skill directory also works.
+**Claude Code** (plugin, updates itself):
 
-See the official [Claude Code skill documentation](https://code.claude.com/docs/en/skills)
-and [Codex skill documentation](https://developers.openai.com/codex/skills).
+```sh
+claude plugin marketplace add liam724/skills
+claude plugin install liam-skills@liam724
+```
 
-### Coverage and privacy
+**Any agent** (Codex, Cursor, Claude Code and others, via [skills.sh](https://skills.sh/liam724/skills)):
 
-The helpers read supported JSONL layouts, include archived Codex sessions,
-and report missing sources, unsupported exports, and parsing failures.
-They do not read Cursor's internal database or parse plain-text exports.
-Source formats can change; partial coverage is reported, not hidden.
+```sh
+npx skills@latest add liam724/skills
+```
 
-The default window selects sessions active in the last 30 days and preserves
-their earlier context. Failure detection is heuristic, with English text
-patterns and structured tool-error checks. It is not a root-cause classifier.
+This copies editable files into your agent's skills folder. Run
+`npx skills@latest update` to pull changes.
 
-Helper output contains full private prompts or traces and local paths. It is
-not anonymized. Keep it outside this repository and never publish it.
-The shipped tests contain only synthetic data, never real session history.
+## Skills
 
-### Test
+- **[transcript-mining](skills/transcript-mining/SKILL.md)**: reviews your
+  local Claude Code, Cursor and Codex transcripts to find repeated work and
+  failures, then suggests fixes to your instructions, skills, tools and
+  settings. Run `/transcript-mining` in Claude Code or `$transcript-mining`
+  in Codex.
+
+## transcript-mining notes
+
+**Privacy.** The helper scripts output your full prompts, traces and local
+paths. Nothing is anonymised. Keep that output out of any repo and never
+publish it. The tests here use synthetic data only.
+
+**What it reads.** JSONL transcripts from Claude Code, Cursor and Codex,
+including archived Codex sessions, from the last 30 days by default. It does
+not read Cursor's internal database or plain-text exports. It reports missing
+sources and parse failures instead of hiding them.
+
+**Limits.** Failure detection is a heuristic based on English text patterns
+and tool errors, not a root-cause classifier.
+
+**Requirements.** Python 3.8+. No packages and no network access.
+
+## Develop
+
+Inside this repo, `.claude/skills/` and `.agents/skills/` link to `skills/`,
+so the skills load in Claude Code and Codex without installing.
 
 ```sh
 python3 -m unittest discover -s tests -p test_transcript_mining.py -v
 ```
+
+## License
+
+[MIT](LICENSE)

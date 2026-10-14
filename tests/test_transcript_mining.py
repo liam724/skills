@@ -13,7 +13,7 @@ from unittest.mock import patch
 
 
 REPO = Path(__file__).resolve().parents[1]
-SKILL = REPO / "transcript-mining"
+SKILL = REPO / "skills/transcript-mining"
 if not SKILL.is_dir():
     SKILL = REPO / ".claude/skills/transcript-mining"
 SCRIPTS = SKILL / "scripts"
