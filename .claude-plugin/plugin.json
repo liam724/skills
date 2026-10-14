@@ -1,0 +1,13 @@
+{
+  "name": "liam-skills",
+  "version": "0.1.0",
+  "description": "Liam McGuire's agent skills for getting more out of coding agents.",
+  "author": {
+    "name": "Liam McGuire",
+    "url": "https://github.com/liam724"
+  },
+  "repository": "https://github.com/liam724/skills",
+  "license": "MIT",
+  "keywords": ["skills", "claude-code", "codex", "transcripts", "productivity"],
+  "skills": ["./skills/transcript-mining"]
+}
