@@ -1,6 +1,5 @@
 # Skills
 
-[![skills.sh](https://skills.sh/b/liam724/skills)](https://skills.sh/liam724/skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Agent skills I use to get more out of Claude Code, Codex and Cursor.
