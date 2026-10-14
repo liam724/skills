@@ -2,10 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-Agent skills I use to get more out of Claude Code, Codex and Cursor.
-
-Each skill is a small folder with a `SKILL.md` and, where it helps, a few
-scripts. Read them, copy them, change them. They're meant to be yours.
+Agent skills I use daily to move faster without compromising quality.
 
 ## Install
 
@@ -31,13 +28,11 @@ This copies editable files into your agent's skills folder. Run
 
 ### transcript-mining
 
-You correct your agent the same way every week. You paste the same context,
-explain the same convention, and watch it fail on the same task. Each time
-feels small, so you never fix the cause.
+The beauty of working with agents is that everything is recorded. Session traces can help us optimise workflows and improve how we work by finding errors that are repeatedly corrected or recurring workflows that drain time, then suggesting ways to remove that friction
 
 This skill reads your past conversations and finds those patterns for you.
 It ranks what it finds by how often it happens, shows the evidence, and
-proposes the smallest fix: a line in your instructions, a new or trimmed
+proposes the smallest fix: a line in your instructions, a new (or better, removed)
 skill, a script, or a settings change. You pick what to apply.
 
 **Run it:** `/transcript-mining` in Claude Code, `$transcript-mining` in
