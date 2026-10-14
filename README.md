@@ -29,27 +29,37 @@ This copies editable files into your agent's skills folder. Run
 
 ## Skills
 
-- **[transcript-mining](skills/transcript-mining/SKILL.md)**: reviews your
-  local Claude Code, Cursor and Codex transcripts to find repeated work and
-  failures, then suggests fixes to your instructions, skills, tools and
-  settings. Run `/transcript-mining` in Claude Code or `$transcript-mining`
-  in Codex.
+### transcript-mining
 
-## transcript-mining notes
+You correct your agent the same way every week. You paste the same context,
+explain the same convention, and watch it fail on the same task. Each time
+feels small, so you never fix the cause.
 
-**Privacy.** The helper scripts output your full prompts, traces and local
-paths. Nothing is anonymised. Keep that output out of any repo and never
-publish it. The tests here use synthetic data only.
+This skill reads your past conversations and finds those patterns for you.
+It ranks what it finds by how often it happens, shows the evidence, and
+proposes the smallest fix: a line in your instructions, a new or trimmed
+skill, a script, or a settings change. You pick what to apply.
 
-**What it reads.** JSONL transcripts from Claude Code, Cursor and Codex,
-including archived Codex sessions, from the last 30 days by default. It does
-not read Cursor's internal database or plain-text exports. It reports missing
-sources and parse failures instead of hiding them.
+**Run it:** `/transcript-mining` in Claude Code, `$transcript-mining` in
+Codex, or ask for it by name in a chat app.
 
-**Limits.** Failure detection is a heuristic based on English text patterns
-and tool errors, not a root-cause classifier.
+**What it reads.** It uses the best source it can reach:
 
-**Requirements.** Python 3.8+. No packages and no network access.
+- On your machine: Claude Code, Cursor and Codex transcripts, from the last
+  30 days by default. Needs Python 3.8+, with no packages and no network.
+- In a web chat or cloud agent: your chat history, through the app's
+  past-chats tools.
+- Anywhere else: a Claude or ChatGPT data export you upload.
+
+It tells you what it covered and what it couldn't read, rather than
+guessing.
+
+**Privacy.** Your conversations go to the model you're running. The local
+helpers output full prompts and file paths with nothing anonymised, so keep
+that output out of any repo. The tests here use synthetic data only.
+
+**Limits.** Failure detection is a heuristic based on English phrasing and
+tool errors. Treat its matches as leads, not verdicts.
 
 ## Develop
 
